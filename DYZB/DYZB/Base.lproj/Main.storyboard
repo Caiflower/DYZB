@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hT4-br-5sP">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -8,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Nza-T0-AYA">
             <objects>
-                <tabBarController id="hT4-br-5sP" customClass="CFTabBarController" customModule="DYZB" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="hT4-br-5sP" customClass="XXTabBarController" customModule="DYZB" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="k6S-s6-EST">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -18,16 +19,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRR-Tl-9D8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1414" y="135"/>
-        </scene>
-        <!--Porfile-->
-        <scene sceneID="k9r-JF-2wY">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Porfile" id="tg9-zz-1fe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YYo-Xa-JxF"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="78g-aQ-VI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="305" y="1182"/>
         </scene>
     </scenes>
 </document>
