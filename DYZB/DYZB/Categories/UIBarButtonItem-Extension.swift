@@ -10,7 +10,7 @@ import UIKit
 
 extension UIBarButtonItem {
     /*
-    class func creatItem(imageName : String , selectedImageName : String = "" , size : CGSize = CGSize.zero , target : AnyObject? ,action : Selector) -> UIBarButtonItem{
+    class func creatItem(imageName : String, selectedImageName : String = "", size : CGSize = CGSize.zero, target : AnyObject?,action : Selector) -> UIBarButtonItem{
         let btn = UIButton()
         btn.setImage(UIImage(named: imageName), for: .normal)
         if selectedImageName != "" {
@@ -28,7 +28,7 @@ extension UIBarButtonItem {
     }
  */
      // 便利构造函数: 1> convenience开头 2> 在构造函数中必须明确调用一个设计的构造函数(self)
-    convenience init(imageName : String , selectedImageName : String = "", size : CGSize = CGSize.zero , target : AnyObject , action : Selector) {
+    convenience init(imageName : String, selectedImageName : String = "", size : CGSize = CGSize.zero, target : AnyObject, action : Selector) {
         // 1. 创建按钮
         let btn = UIButton()
         // 2. 设置图片

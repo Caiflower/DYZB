@@ -11,21 +11,21 @@ private let kTitleViewHeight : CGFloat = 40
 class XXHomeViewController: UIViewController {
     fileprivate lazy var titleView : XXPageTitleView = { [weak self] in
         let titleFrame = CGRect(x: 0, y: kStatusBarHeight + kNavigationBarHeight, width: kScreenWidth, height: kTitleViewHeight)
-        let titles = ["推荐" , "游戏" , "娱乐" , "趣玩"]
+        let titles = ["推荐", "游戏", "娱乐", "趣玩"]
         let titleView = XXPageTitleView(frame: titleFrame, titles: titles)
         titleView.deleage = self
         return titleView
     }()
     fileprivate lazy var contentView : XXPageContentView = {[weak self] in
         let contentFrame = CGRect(x: 0, y: (self?.titleView.frame.maxY)!, width: kScreenWidth, height: kScreenHeight - (self?.titleView.frame.maxY)!)
-        let viewControllers = [UIViewController(), UIViewController(), UIViewController() ,UIViewController()]
+        let viewControllers = [UIViewController(), UIViewController(), UIViewController(),UIViewController()]
         let contentView = XXPageContentView(frame: contentFrame, viewControllers: viewControllers, parentViewController: self!)
         contentView.delegate = self
         return contentView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         setupUI()
     }
 
@@ -81,7 +81,7 @@ extension XXHomeViewController {
 }
 
 extension XXHomeViewController : XXPageTitleViewDelegate {
-    func titleView(titleView: XXPageTitleView, selectedIndex: Int) {
+    func pageTitleView(titleView: XXPageTitleView, selectedIndex: Int) {
         contentView.setCurrentIndex(currentIndex: selectedIndex)
     }
 }

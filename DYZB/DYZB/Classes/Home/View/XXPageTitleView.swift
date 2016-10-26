@@ -8,7 +8,7 @@
 
 import UIKit
 protocol XXPageTitleViewDelegate: class {
-    func titleView(titleView: XXPageTitleView , selectedIndex : Int)
+    func pageTitleView(titleView: XXPageTitleView, selectedIndex : Int)
 }
 
 class XXPageTitleView: UIView {
@@ -32,7 +32,7 @@ class XXPageTitleView: UIView {
     weak var deleage : XXPageTitleViewDelegate?
     
     // MARK: - 自定义构造函数
-    init(frame : CGRect , titles : [String]) {
+    init(frame : CGRect, titles : [String]) {
         self.titles = titles
         super.init(frame: frame)
         // 设置UI界面
@@ -82,8 +82,9 @@ extension XXPageTitleView {
                 // 2.获取上一次的label
                  let oldLabel = self?.titleLabels[(self?.currentIndex)!]
                 // 3.切换文字的颜色
-                label.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
-                oldLabel?.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
+//                label.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+//                oldLabel?.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
+                self?.exchangeLabelState(sourceLabel: oldLabel!, targetLabel: label)
                 // 4.保存最新Label的下标值
                 self?.currentIndex = label.tag
                 
@@ -93,7 +94,7 @@ extension XXPageTitleView {
                     self?.scrollLine.frame.origin.x = scrollLineX
                 }
                 // 6.通知代理
-                self?.deleage?.titleView(titleView: self!, selectedIndex: (self?.currentIndex)!)
+                self?.deleage?.pageTitleView(titleView: self!, selectedIndex: (self?.currentIndex)!)
             }
         }
     }
@@ -114,15 +115,19 @@ extension XXPageTitleView {
         scrollView.addSubview(scrollLine)
         scrollLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height - kScrollLineH, width: firstLabel.frame.width, height: kScrollLineH)
     }
+    
+    fileprivate func exchangeLabelState(sourceLabel : UILabel, targetLabel : UILabel) {
+        targetLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+        sourceLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
+    }
 }
 
 // MARK: - 公开的方法
 extension XXPageTitleView {
-    func setTitleWithProgress(progress : CGFloat , sourceIndex : Int , targetIndex : Int) {
+    func setTitleWithProgress(progress : CGFloat, sourceIndex : Int, targetIndex : Int) {
         // 1.取出sourceLabel/targetLabel
         let sourceLabel = titleLabels[sourceIndex]
         let targetLabel = titleLabels[targetIndex]
-        
         // 2.处理滑块的逻辑
         let moveTotalX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
         let moveX = moveTotalX * progress
